@@ -1,37 +1,131 @@
-## Welcome to GitHub Pages
+<!DOCTYPE html>
 
-You can use the [editor on GitHub](https://github.com/2old2die/2old2die.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+<html>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<head>
 
-### Markdown
+<meta charset="UTF-8">
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+<title>3DViewTEST_QuarryOnly_ColladaModels_5Feb17_v7_BothTowers</title>
 
-```markdown
-Syntax highlighted code block
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-# Header 1
-## Header 2
-### Header 3
+<link rel="stylesheet" type="text/css" href="./Qgis2threejs.css">
 
-- Bulleted
-- List
+</head>
 
-1. Numbered
-2. List
+<body>
 
-**Bold** and _Italic_ and `Code` text
+<div id="webgl"></div>
 
-[Link](url) and ![Image](src)
-```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
+<!-- popup -->
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/2old2die/2old2die.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+<div id="popup" style="display:none;">
 
-### Support or Contact
+<div id="closebtn">&times;</div>
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+<div id="popupbar"></div>
+
+<div id="popupbody">
+
+ <div id="popupcontent"></div>
+
+ <div id="pageinfo">
+
+  <h1>Current View URL</h1>
+
+  <div><input id="urlbox" type="text"></div>
+
+
+
+  <h1>Usage</h1>
+
+  <div id="usage"></div>
+
+
+
+  <h1>About</h1>
+
+  <div id="about">This page was made with <a href="http://www.qgis.org/" target="_blank">QGIS</a> and <a href="https://github.com/minorua/Qgis2threejs" target="_blank">Qgis2threejs</a> plugin, 
+
+and uses the following library:
+
+  <ul>
+
+  <li>three.js <a href="http://threejs.org/" target="_blank">http://threejs.org/</a> <a href="./threejs/LICENSE" target="_blank" class="license">(LICENSE)</a></li>
+
+  <li id="lib_proj4js" style="display: none;">Proj4js <a href="http://trac.osgeo.org/proj4js/" target="_blank">http://trac.osgeo.org/proj4js/</a> <a href="./proj4js/LICENSE.md" target="_blank" class="license">(LICENSE)</a></li>
+
+  </ul>
+
+  </div>
+
+ </div>
+
+</div></div>
+
+
+
+<!-- footer -->
+
+<div id="footer"><div id="infobtn">i</div></div>
+
+
+
+<script src="./threejs/three.min.js"></script>
+
+<script src="./Qgis2threejs.js"></script>
+
+<script src="./threejs/OrbitControls.js"></script>
+
+<script>
+
+var option = Q3D.Options;
+
+
+
+</script>
+
+<script src="./threejs/loaders/ColladaLoader.js"></script>
+
+<script src="./3DViewTEST_QuarryOnly_ColladaModels_5Feb17_v7_BothTowers.js"></script>
+
+<script>
+
+if (typeof proj4 !== "undefined") document.getElementById("lib_proj4js").style.display = "list-item";
+
+
+
+var container = document.getElementById("webgl");
+
+var app = Q3D.application;
+
+app.init(container);
+
+
+
+// load the project
+
+app.loadProject(project);
+
+
+
+document.getElementById("infobtn").onclick = app.showInfo.bind(app);
+
+if ("hidebutton" in app.urlParams) document.getElementById("infobtn").style.display = "none";
+
+
+
+app.addEventListeners();
+
+app.start();
+
+
+
+</script>
+
+</body>
+
+</html>
